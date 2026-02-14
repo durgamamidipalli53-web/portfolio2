@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Durga | Portfolio</title>
+    <link rel="stylesheet" href="home.css">
+    <!-- ================= CSS STYLES ================= -->
+</head>
+<body>
+
+    <!-- ================= BACKGROUND LAYERS (Required) ================= -->
+    <div class="animated-bg"></div>
+    <div id="bubble-container"></div>
+
+    <!-- ================= HEADER ================= -->
+    <header class="header">
+        <div class="logo"><a href="index.html"><img src="C:\Users\sunay\OneDrive\Desktop\fullstack\portfolio1\images\durgaimage.jpeg"></a></div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="skills.html">Skills</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ================= HERO SECTION ================= -->
+    <section class="hero">
+        <!-- LEFT IMAGE -->
+        <div class="image-container">
+            <div class="glass-card">
+                <!-- 
+                     NOTE: Browsers often block local paths (C:\Users...) for security.
+                     To use your local image, uncomment the line below and remove the src="https..." line.
+                -->
+                <!-- <img src="C:\Users\sunay\OneDrive\Desktop\fullstack\portfolio1\images\durga.jpg" alt="Durga"> -->
+                <img src="C:\Users\sunay\OneDrive\Desktop\fullstack\portfolio1\images\durgaimage.jpeg" alt="Durga Placeholder">
+                <div class="rotating-border"></div>
+            </div>
+        </div>
+
+        <!-- RIGHT CONTENT -->
+        <div class="content">
+            <h1>Hi, I'm <span>Durga</span></h1>
+            <h2>B.Sc Computer Science Student</h2>
+            <p>
+                I am passionate about web development and programming.
+                I love building clean, responsive interfaces and improving
+                my skills through real-world projects.
+            </p>
+
+            <div class="buttons">
+                <a href="projects.html" class="btn primary">My Projects</a>
+                <a href="C:\Users\sunay\OneDrive\Desktop\fullstack\portfolio1\Hema Satya Durga_Mamidipalli_(22) 3.pdf" class="btn secondary" download="pdf">My Resume</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= EMBEDDED JAVASCRIPT ================= -->
+    <script>
+        // 1. Page Load Animation
+        window.addEventListener("load", () => {
+            document.querySelector(".image-container").classList.add("show");
+            document.querySelector(".content").classList.add("show");
+            document.querySelector(".header").classList.add("show");
+        });
+
+        // 2. Active Nav Link Logic
+        const links = document.querySelectorAll(".nav-links a");
+        links.forEach(link => {
+            link.addEventListener("click", () => {
+                links.forEach(l => l.classList.remove("active"));
+                link.classList.add("active");
+            });
+        });
+
+        // 3. BUBBLE GENERATOR LOGIC
+        const bubbleContainer = document.getElementById('bubble-container');
+
+        function createBubble() {
+            const bubble = document.createElement('div');
+            bubble.classList.add('bubble');
+            
+            // Random Size
+            const size = Math.random() * 60 + 20;
+            bubble.style.width = `${size}px`;
+            bubble.style.height = `${size}px`;
+            
+            // Random Horizontal Position
+            bubble.style.left = `${Math.random() * 100}%`;
+            
+            // Random Animation Speed (10s to 20s)
+            const duration = Math.random() * 10 + 10;
+            bubble.style.animationDuration = `${duration}s`;
+            
+            bubbleContainer.appendChild(bubble);
+
+            // Remove bubble after animation to prevent memory leaks
+            setTimeout(() => {
+                bubble.remove();
+            }, duration * 1000);
+        }
+
+        // Generate bubbles every 600ms
+        setInterval(createBubble, 600);
+
+        // Generate initial batch of bubbles immediately
+        for(let i = 0; i < 10; i++) {
+            setTimeout(createBubble, i * 300);
+        }
+    </script>
+
+</body>
+</html>

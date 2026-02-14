@@ -1,0 +1,233 @@
+/* RESET */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    background:#05050a;
+    color:#fff;
+    min-height:100vh;
+    overflow-x:hidden;
+}
+
+/* BACKGROUND */
+.animated-bg{
+    position:fixed;
+    inset:0;
+    background:url("https://wallpaperaccess.com/full/1119343.jpg") center/cover;
+    filter:brightness(0.3) blur(4px);
+    animation:bgPan 30s alternate infinite;
+    z-index:-5;
+}
+
+@keyframes bgPan{
+    from{transform:scale(1);}
+    to{transform:scale(1.1);}
+}
+
+/* BUBBLES */
+#bubble-container{
+    position:fixed;
+    inset:0;
+    z-index:-1;
+    pointer-events:none;
+}
+
+.bubble{
+    position:absolute;
+    border-radius:50%;
+    background:radial-gradient(circle at 30% 30%,rgba(255,255,255,0.15),rgba(168,85,247,0.15));
+    border:1px solid rgba(168,85,247,0.3);
+    box-shadow:0 0 15px rgba(168,85,247,0.25);
+    opacity:0.6;
+}
+
+/* HEADER */
+.header{
+    position:fixed;
+    top:0;
+    width:100%;
+    padding:20px 10%;
+    background:#141428;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    opacity:0;
+    transform:translateY(-20px);
+    transition:0.6s;
+    z-index:1000;
+}
+
+.header.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.logo img{
+    height:50px;
+    width:50px;
+    border-radius:50%;
+    border:2px solid #a855f7;
+}
+
+.nav-links{
+    list-style:none;
+    display:flex;
+    gap:25px;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:#cfcfcf;
+    padding:8px 18px;
+    border-radius:25px;
+    transition:all .3s ease;
+}
+
+.nav-links a:hover{
+    box-shadow:0 5px 15px rgba(168,85,247,.35),
+               0 0 25px rgba(168,85,247,.25);
+}
+
+.nav-links a.active{
+    background:#a855f7;
+    color:#fff;
+}
+
+/* SECTION */
+.skills-section{
+    padding:120px 10% 60px;
+}
+
+.section-title{
+    text-align:center;
+    font-size:36px;
+    margin-bottom:50px;
+    opacity:0;
+    transform:translateY(30px);
+    transition:.8s;
+}
+
+.section-title.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.section-title span{color:#a855f7;}
+
+.skills-container{
+    max-width:1100px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:30px;
+    opacity:0;
+    transform:translateY(30px);
+    transition:.8s;
+}
+
+.skills-container.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.category-title{
+    grid-column:1/-1;
+    color:#a855f7;
+    font-size:22px;
+    margin:40px 0 15px;
+    border-left:4px solid #a855f7;
+    padding-left:12px;
+}
+
+/* FLOAT CARD */
+@keyframes floatCard{
+    0%{transform:translateY(0);}
+    50%{transform:translateY(-12px);}
+    100%{transform:translateY(0);}
+}
+
+.skill-card{
+    background:rgba(26,26,46,.75);
+    border:1px solid rgba(168,85,247,.25);
+    border-radius:18px;
+    padding:30px 20px;
+    text-align:center;
+    animation:floatCard 5s ease-in-out infinite;
+    transition:.35s;
+}
+
+.skill-card:nth-child(even){animation-duration:5.8s;}
+.skill-card:nth-child(odd){animation-duration:4.6s;}
+
+.skill-card i{
+    font-size:40px;
+    color:#a855f7;
+    margin-bottom:15px;
+}
+
+/* HOVER */
+.skill-card:hover{
+    background:rgba(40,40,80,.85);
+    border-color:#a855f7;
+    box-shadow:0 0 25px rgba(168,85,247,.5);
+}
+
+/* ===== PROGRESS ===== */
+.skill-progress{
+    width:100%;
+    margin-top:12px;
+    opacity:0;
+    transform:translateY(10px);
+    transition:.35s ease;
+}
+
+.progress-bar{
+    width:0%;
+    height:6px;
+    background:linear-gradient(90deg,#a855f7,#d946ef);
+    border-radius:10px;
+    transition:width .8s ease;
+}
+
+.percent-text{
+    display:block;
+    font-size:12px;
+    margin-top:6px;
+    color:#cfcfcf;
+}
+
+.skill-card:hover .skill-progress{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.skill-card:hover .progress-bar{
+    width:var(--percent);
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+    .nav-links{display:none;}
+    .section-title{font-size:28px;}
+}
+/* ===== SKILLS SUBTITLE ===== */
+.skills-subtitle{
+    text-align:center;
+    max-width:700px;
+    margin: -20px auto 40px;
+    color:#cfcfcf;
+    font-size:18px;
+    line-height:1.6;
+    opacity:0;
+    transform:translateY(20px);
+    transition:0.8s ease;
+}
+
+.skills-subtitle.show{
+    opacity:1;
+    transform:translateY(0);
+}

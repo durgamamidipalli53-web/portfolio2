@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Me | Durga</title>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="contact.css">
+    <!-- ================= CSS STYLES ================= -->
+    
+</head>
+<body>
+
+    <!-- ================= BACKGROUND LAYERS ================= -->
+    <div class="animated-bg"></div>
+    <div id="bubble-container"></div>
+
+    <!-- ================= HEADER ================= -->
+    <header class="header">
+       <div class="logo"><a href="index.html"><img src="C:\Users\sunay\OneDrive\Desktop\fullstack\portfolio1\images\durgaimage.jpeg"></a></div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="skills.html">Skills</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ================= CONTACT SECTION ================= -->
+    <section class="contact-section">
+        <h1 class="section-title">Get In <span>Touch</span></h1>
+        <p class="contact-subtitle">
+    I'm always open to discussing new opportunities, creative ideas, or collaborations. Feel free to reach out anytime!
+</p>
+
+        <div class="contact-wrapper">
+            
+            <!-- LEFT SIDE: Contact Details -->
+            <div class="card contact-info-card">
+                <h2>Let's Connect</h2>
+                <p style="margin-bottom: 20px; color: #d1d1d1; font-size: 14px;">
+                    Feel free to reach out for collaborations, projects, or just to say hello!
+                </p>
+
+                <div class="info-item">
+                    <i class="fa-solid fa-envelope"></i>
+                    <div>
+                        <span>Email Me</span>
+                        <p>durgamamidipalli45@example.com</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <i class="fa-solid fa-phone"></i>
+                    <div>
+                        <span>Call Me</span>
+                        <p>+91 8309398497</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <div>
+                        <span>Location</span>
+                        <p>Amalapuram, Andhra Pradesh</p>
+                    </div>
+                </div>
+
+                <!-- Social Icons -->
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/durga-mamidipalli-008843341?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="social-icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="https://github.com/durgamamidipalli53-web" class="social-icon"><i class="fa-brands fa-github"></i></a>
+                   
+                </div>
+            </div>
+
+            <!-- RIGHT SIDE: Form -->
+            <div class="card form-card">
+                <h2>Send a Message</h2>
+                <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Message Sent Successfully!');">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" placeholder="john@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" placeholder="Write your message here..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Send Message</button>
+                </form>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ================= JAVASCRIPT ================= -->
+    <script>
+        // 1. Page Load Animation
+        window.addEventListener("load", () => {
+    document.querySelector(".header").classList.add("show");
+    document.querySelector(".section-title").classList.add("show");
+    document.querySelector(".contact-subtitle").classList.add("show");
+    
+    setTimeout(() => {
+        document.querySelectorAll(".card").forEach(card => {
+            card.classList.add("show");
+        });
+    }, 200);
+});
+
+
+        // 2. BUBBLE GENERATOR LOGIC
+        const bubbleContainer = document.getElementById('bubble-container');
+
+        function createBubble() {
+            const bubble = document.createElement('div');
+            bubble.classList.add('bubble');
+            
+            // Random Size
+            const size = Math.random() * 60 + 20;
+            bubble.style.width = `${size}px`;
+            bubble.style.height = `${size}px`;
+            
+            // Random Position
+            bubble.style.left = `${Math.random() * 100}%`;
+            
+            // Random Speed
+            const duration = Math.random() * 10 + 10;
+            bubble.style.animationDuration = `${duration}s`;
+            
+            bubbleContainer.appendChild(bubble);
+
+            // Cleanup
+            setTimeout(() => {
+                bubble.remove();
+            }, duration * 1000);
+        }
+
+        setInterval(createBubble, 600);
+
+        // Initial batch
+        for(let i = 0; i < 10; i++) {
+            setTimeout(createBubble, i * 300);
+        }
+    </script>
+
+</body>
+</html>

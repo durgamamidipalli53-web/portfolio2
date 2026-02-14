@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills | Durga</title>
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Skills CSS -->
+    <link rel="stylesheet" href="skills.css">
+</head>
+<body>
+
+    <!-- BACKGROUND -->
+    <div class="animated-bg"></div>
+    <div id="bubble-container"></div>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="logo">
+            <a href="index.html">
+                <img src="images/durgaimage.jpeg" alt="Durga">
+            </a>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="skills.html" class="active">Skills</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </header>
+
+    <!-- SKILLS -->
+    <section class="skills-section">
+        <h1 class="section-title">My <span>Skills</span></h1>
+        <p class="skills-subtitle">
+     Crafting modern, responsive, and high-performance web experiences.
+</p>
+
+
+        <div class="skills-container">
+
+            <div class="category-title">Frontend Development</div>
+
+            <div class="skill-card">
+                <i class="fa-brands fa-html5"></i>
+                <h3>HTML5</h3>
+                <div class="skill-progress">
+                    <div class="progress-bar" style="--percent:90%"></div>
+                    <span class="percent-text">90%</span>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <i class="fa-brands fa-css3-alt"></i>
+                <h3>CSS3</h3>
+                <div class="skill-progress">
+                    <div class="progress-bar" style="--percent:85%"></div>
+                    <span class="percent-text">85%</span>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <i class="fa-brands fa-js"></i>
+                <h3>JavaScript</h3>
+                <div class="skill-progress">
+                    <div class="progress-bar" style="--percent:75%"></div>
+                    <span class="percent-text">75%</span>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <i class="fa-brands fa-react"></i>
+                <h3>React</h3>
+                <div class="skill-progress">
+                    <div class="progress-bar" style="--percent:70%"></div>
+                    <span class="percent-text">70%</span>
+                </div>
+            </div>
+
+            <div class="category-title">Backend & Languages</div>
+
+            <div class="skill-card">
+                <i class="fa-brands fa-python"></i>
+                <h3>Python</h3>
+                <div class="skill-progress">
+                    <div class="progress-bar" style="--percent:80%"></div>
+                    <span class="percent-text">80%</span>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <i class="fa-brands fa-node"></i>
+                <h3>Node.js</h3>
+                <div class="skill-progress">
+                    <div class="progress-bar" style="--percent:65%"></div>
+                    <span class="percent-text">65%</span>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <i class="fa-solid fa-database"></i>
+                <h3>SQL</h3>
+                <div class="skill-progress">
+                    <div class="progress-bar" style="--percent:75%"></div>
+                    <span class="percent-text">75%</span>
+                </div>
+            </div>
+
+            <div class="category-title">Tools & Others</div>
+
+            <div class="skill-card">
+                <i class="fa-brands fa-git-alt"></i>
+                <h3>Git</h3>
+                <div class="skill-progress">
+                    <div class="progress-bar" style="--percent:85%"></div>
+                    <span class="percent-text">85%</span>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <i class="fa-brands fa-github"></i>
+                <h3>GitHub</h3>
+                <div class="skill-progress">
+                    <div class="progress-bar" style="--percent:90%"></div>
+                    <span class="percent-text">90%</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- JAVASCRIPT (unchanged bubbles) -->
+    <script>
+        window.addEventListener("load", () => {
+    document.querySelector(".header").classList.add("show");
+    document.querySelector(".section-title").classList.add("show");
+    document.querySelector(".skills-subtitle").classList.add("show");
+    document.querySelector(".skills-container").classList.add("show");
+});
+
+
+        const container = document.getElementById("bubble-container");
+        const bubbles = [];
+        const COUNT = 18;
+
+        for (let i = 0; i < COUNT; i++) {
+            const bubble = document.createElement("div");
+            bubble.className = "bubble";
+
+            const size = Math.random() * 40 + 20;
+            bubble.style.width = bubble.style.height = size + "px";
+
+            const x = Math.random() * window.innerWidth;
+            const y = Math.random() * window.innerHeight;
+
+            container.appendChild(bubble);
+
+            bubbles.push({
+                el: bubble,
+                x,
+                y,
+                dx: (Math.random() - 0.5) * 0.3,
+                dy: (Math.random() - 0.5) * 0.3,
+                size
+            });
+        }
+
+        function animate() {
+            bubbles.forEach(b => {
+                b.x += b.dx;
+                b.y += b.dy;
+
+                if (b.x < 0 || b.x + b.size > window.innerWidth) b.dx *= -1;
+                if (b.y < 0 || b.y + b.size > window.innerHeight) b.dy *= -1;
+
+                b.el.style.transform = `translate(${b.x}px, ${b.y}px)`;
+            });
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+    </script>
+
+</body>
+</html>

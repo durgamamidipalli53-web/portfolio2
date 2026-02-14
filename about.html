@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me | Durga</title>
+    <link rel="stylesheet" href="about.css">
+</head>
+<body>
+
+    <!-- ================= BACKGROUND LAYERS ================= -->
+    <div class="animated-bg"></div>
+    <div id="bubble-container"></div>
+
+    <!-- ================= HEADER ================= -->
+    <header class="header">
+        <div class="logo">
+            <a href="index.html">
+                <img src="C:\Users\sunay\OneDrive\Desktop\fullstack\portfolio1\images\durgaimage.jpeg" alt="Durga">
+            </a>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="skills.html">Skills</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ================= ABOUT SECTION ================= -->
+    <section class="about-section">
+        <div class="about-card">
+
+            <!-- ================= LEFT SIDE ================= -->
+            <div class="about-left">
+                <div class="about-img-wrapper">
+                    <img src="C:\Users\sunay\OneDrive\Desktop\fullstack\portfolio1\images\durgaimage.jpeg" alt="Durga">
+                </div>
+
+                <div class="about-details">
+                    <h2>Durga</h2>
+                    <h3>Student</h3>
+
+                    <div class="info-list">
+                        <div class="info-item">
+                            <span>Experience</span>
+                            <span>Fresher</span>
+                        </div>
+                        <div class="info-item">
+                            <span>Degree</span>
+                            <span>B.Sc CS</span>
+                        </div>
+                        <div class="info-item">
+                            <span>Email</span>
+                            <span>durgamamidipalli45@gmail.com</span>
+                        </div>
+                        <div class="info-item">
+                            <span>Freelance</span>
+                            <span>Available</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================= RIGHT SIDE ================= -->
+            <div class="about-right">
+                <h1>I'm <span>Durga</span>, a passionate Computer Science Student.</h1>
+
+                <p>
+                    I am currently pursuing my Bachelor's degree in Computer Science.
+                    My journey into technology started with a curiosity about how
+                    websites are built, which quickly turned into a passion for coding.
+                </p>
+
+                <p>
+                    I specialize in creating responsive, user-friendly web interfaces
+                    using modern technologies like HTML, CSS, and JavaScript.
+                </p>
+
+                <p>
+                    My goal is to become a full-stack developer who builds impactful
+                    software solutions.
+                </p>
+
+                <!-- ================= EDUCATION SECTION ================= -->
+                <div class="education-section">
+                    <h2>Education</h2>
+
+                    <div class="education-item">
+                        <h3>B.Sc Computer Science</h3>
+                        <span class="edu-college">Aditya Degree College,Amalapuram</span>
+                        <span class="edu-year">2023 – 2026</span>
+                        <p>
+                            Currently pursuing Computer Science with strong foundations
+                            in programming, web development, and problem solving.
+                        </p>
+                    </div>
+
+                    <div class="education-item">
+                        <h3>Intermediate (12th)</h3>
+                        <span class="edu-college">Sri Chaitanya Junior College,Amalapur</span>
+                        <span class="edu-year">2021 – 2023</span>
+                        <p>
+                            Studied Mathematics and Computer Science as core subjects.
+                        </p>
+                    </div>
+
+                    <div class="education-item">
+                        <h3>SSC (10th)</h3>
+                        <span class="edu-college">ZP High School, Allavaram</span>
+                        <span class="edu-year">2021</span>
+                        <p>
+                            Completed secondary education with good academic performance.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="btn-group">
+                    <a href="contact.html" class="btn primary">Contact Me</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================= JAVASCRIPT ================= -->
+    <script>
+        // Page Load Animation
+        window.addEventListener("load", () => {
+            document.querySelector(".header").classList.add("show");
+            document.querySelector(".about-card").classList.add("show");
+        });
+
+        // Bubble Generator
+        const bubbleContainer = document.getElementById("bubble-container");
+
+        function createBubble() {
+            const bubble = document.createElement("div");
+            bubble.classList.add("bubble");
+
+            const size = Math.random() * 60 + 20;
+            bubble.style.width = size + "px";
+            bubble.style.height = size + "px";
+            bubble.style.left = Math.random() * 100 + "%";
+
+            const duration = Math.random() * 10 + 10;
+            bubble.style.animationDuration = duration + "s";
+
+            bubbleContainer.appendChild(bubble);
+
+            setTimeout(() => {
+                bubble.remove();
+            }, duration * 1000);
+        }
+
+        setInterval(createBubble, 600);
+
+        for (let i = 0; i < 10; i++) {
+            setTimeout(createBubble, i * 300);
+        }
+    </script>
+
+</body>
+</html>

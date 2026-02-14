@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Durga</title>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="projects.css">
+    <!-- ================= CSS STYLES ================= -->
+    
+</head>
+<body>
+
+    <!-- ================= BACKGROUND LAYERS ================= -->
+    <div class="animated-bg"></div>
+    <div id="bubble-container"></div>
+
+    <!-- ================= HEADER ================= -->
+    <header class="header">
+        <div class="logo"><a href="index.html"><img src="C:\Users\sunay\OneDrive\Desktop\fullstack\portfolio1\images\durgaimage.jpeg"></a></div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="skills.html">Skills</a></li>
+                <li><a href="projects.html" class="active">Projects</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ================= PROJECTS SECTION ================= -->
+    <section class="projects-section">
+        <h1 class="section-title">My <span>Projects</span></h1>
+        <p class="projects-subtitle">
+    Here are some of the projects I have built to apply my skills in real-world scenarios and create impactful digital solutions.
+</p>
+
+
+        <div class="projects-grid">
+            
+            <!-- Project 1 -->
+            <article class="project-card">
+                <div class="project-image">
+                    <img src="C:\Users\sunay\OneDrive\Desktop\fullstack\portfolio1\images\agri.png" alt="Crypto Dashboard">
+                </div>
+                <div class="project-content">
+                    <h2>Agriculture Market Connect</h2>
+                    <p>A real-time cryptocurrency tracking dashboard featuring live charts, market analysis, and portfolio management tools.</p>
+                    <div class="tech-stack">
+                        <span>React</span>
+                        <span>Chart.js</span>
+                        <span>API</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="btn github"><i class="fa-brands fa-github"></i> Code</a>
+                        <a href="#" class="btn live"><i class="fa-solid fa-eye"></i> Live</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Project 2 -->
+            <article class="project-card">
+                <div class="project-image">
+                    <img src="C:\Users\sunay\OneDrive\Desktop\fullstack\portfolio1\images\Gemini_Generated_Image_gisnv2gisnv2gisn.png" alt="AI Chat App">
+                </div>
+                <div class="project-content">
+                    <h2>Personal Portfolio</h2>
+                    <p>An intelligent chatbot application capable of natural language processing and context-aware responses for customer support.</p>
+                    <div class="tech-stack">
+                        <span>Python</span>
+                        <span>TensorFlow</span>
+                        <span>Flask</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="btn github"><i class="fa-brands fa-github"></i> Code</a>
+                        <a href="#" class="btn live"><i class="fa-solid fa-eye"></i> Live</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Project 3 -->
+            <article class="project-card">
+                <div class="project-image">
+                    <img src="C:\Users\sunay\OneDrive\Desktop\fullstack\portfolio1\images\gemini.png" alt="E-Commerce">
+                </div>
+                <div class="project-content">
+                    <h2>BMI Calculator</h2>
+                    <p>A futuristic shopping platform with a dark mode UI, 3D product previews, and seamless payment gateway integration.</p>
+                    <div class="tech-stack">
+                        <span>Vue.js</span>
+                        <span>Stripe</span>
+                        <span>Firebase</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="btn github"><i class="fa-brands fa-github"></i> Code</a>
+                        <a href="#" class="btn live"><i class="fa-solid fa-eye"></i> Live</a>
+                    </div>
+                </div>
+            </article>
+
+            
+
+        </div>
+    </section>
+
+    <!-- ================= JAVASCRIPT ================= -->
+    <script>
+        // 1. Page Load Animation
+        window.addEventListener("load", () => {
+    document.querySelector(".header").classList.add("show");
+    document.querySelector(".section-title").classList.add("show");
+    document.querySelector(".projects-subtitle").classList.add("show");
+    
+    const cards = document.querySelectorAll('.project-card');
+
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.classList.add('show');
+                }, index * 200); 
+            });
+        });
+
+        // 2. BUBBLE GENERATOR LOGIC
+        const bubbleContainer = document.getElementById('bubble-container');
+
+        function createBubble() {
+            const bubble = document.createElement('div');
+            bubble.classList.add('bubble');
+            
+            // Random Size
+            const size = Math.random() * 60 + 20;
+            bubble.style.width = `${size}px`;
+            bubble.style.height = `${size}px`;
+            
+            // Random Position
+            bubble.style.left = `${Math.random() * 100}%`;
+            
+            // Random Speed
+            const duration = Math.random() * 10 + 10;
+            bubble.style.animationDuration = `${duration}s`;
+            
+            bubbleContainer.appendChild(bubble);
+
+            // Cleanup
+            setTimeout(() => {
+                bubble.remove();
+            }, duration * 1000);
+        }
+
+        setInterval(createBubble, 600);
+
+        // Initial batch
+        for(let i = 0; i < 10; i++) {
+            setTimeout(createBubble, i * 300);
+        }
+    </script>
+
+</body>
+</html>

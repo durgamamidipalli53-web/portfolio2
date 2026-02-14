@@ -1,0 +1,369 @@
+ * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        /* ================= BODY & BACKGROUND ================= */
+        body {
+            background: #05050a;
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* --- 1. Animated Background Image --- */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -5;
+            background-image: url('https://wallpaperaccess.com/full/1119343.jpg'); 
+            background-size: cover;
+            background-position: center;
+            animation: bgPan 30s ease-in-out infinite alternate;
+            filter: brightness(0.3) blur(4px);
+        }
+
+        @keyframes bgPan {
+            0% { transform: scale(1); background-position: 0% 50%; }
+            100% { transform: scale(1.1); background-position: 100% 50%; }
+        }
+
+        /* --- 2. Bubbles Container --- */
+        #bubble-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .bubble {
+            position: absolute;
+            bottom: -100px;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.1), rgba(168, 85, 247, 0.1));
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            border-radius: 50%;
+            box-shadow: 0 0 15px rgba(168, 85, 247, 0.2);
+            animation: riseBubble linear forwards;
+        }
+
+        @keyframes riseBubble {
+            0% { transform: translateY(0) translateX(0) scale(0.8); opacity: 0; }
+            20% { opacity: 0.6; }
+            80% { opacity: 0.3; }
+            100% { transform: translateY(-120vh) translateX(20px) scale(1.1); opacity: 0; }
+        }
+
+        /* --- 3. Grid & Dots Overlay --- */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(168, 85, 247, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(168, 85, 247, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: techGridMove 25s linear infinite;
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-image: radial-gradient(circle, rgba(168, 85, 247, 0.3) 1px, transparent 1px);
+            background-size: 140px 140px;
+            animation: techDotsFloat 30s linear infinite;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        @keyframes techGridMove {
+            from { background-position: 0 0; }
+            to { background-position: 500px 500px; }
+        }
+
+        @keyframes techDotsFloat {
+            from { background-position: 0 0; }
+            to { background-position: -400px -400px; }
+        }
+
+        /* ================= HEADER ================= */
+        .header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 20px 10%;
+    background: #141428;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: 0.6s ease;
+    z-index: 1000;
+}
+
+.header.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.logo a img{
+    font-size: 24px;
+    font-weight: bold;
+    color: #a855f7;
+    height: 50px;
+    width:50px;
+    border-radius:50%;
+    border: 2px solid #a855f7;
+}
+/* NAVIGATION BUTTON STYLE */
+.nav-links a {
+   text-decoration: none;
+    color: #cfcfcf;
+    padding: 8px 18px;
+    border-radius: 25px;          /* makes it rounded like a button */
+    border: 2px solid transparent; /* optional border */
+    transition: all 0.3s ease;
+    font-weight: 500;
+    background: transparent;    
+
+      transition:
+    background-color 0.35s ease,
+    color 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease,
+    transform 0.35s ease;
+}
+.nav-links a:hover {
+   transition:
+    background-color 0.35s ease,
+    color 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease,
+    transform 0.35s ease;
+
+}
+.nav-links a:hover {
+  box-shadow:
+    0 5px 15px rgba(168, 85, 247, 0.35),
+    0 0 25px rgba(168, 85, 247, 0.25);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+}
+
+/* Active link style */
+.nav-links a.active {
+    background-color: #a855f7;
+    color: #fff;
+    border-color: #a855f7;
+    box-shadow: 0 5px 15px rgba(168, 85, 247, 0.4);
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #cfcfcf;
+}
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+        /* ================= PROJECTS SECTION STYLES ================= */
+        .projects-section {
+            padding: 120px 10% 60px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 42px;
+            margin-bottom: 60px;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: 0.8s ease;
+        }
+        .section-title.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .section-title span {
+            color: #a855f7;
+            text-shadow: 0 0 15px rgba(168, 85, 247, 0.6);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        /* --- MODIFICATION: FLOATING PROJECT CARD --- */
+        @keyframes floatProject {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0); }
+        }
+
+        .project-card {
+            background: rgba(26, 26, 46, 0.75);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(168, 85, 247, 0.25);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: 0.4s ease;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(40px);
+            animation: floatProject 6s ease-in-out infinite; /* Floating Animation */
+        }
+        
+        /* Stagger Entrance */
+        .project-card:nth-child(1) { transition-delay: 0.1s; }
+        .project-card:nth-child(2) { transition-delay: 0.2s; }
+        .project-card:nth-child(3) { transition-delay: 0.3s; }
+        
+        .project-card.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Stagger Floating Delays */
+        .project-card:nth-child(2n) { animation-delay: 1s; }
+        .project-card:nth-child(3n) { animation-delay: 2s; }
+
+        .project-card:hover {
+            background: rgba(168, 85, 247, 0.1);
+            border-color: #a855f7;
+            box-shadow: 0 20px 50px rgba(168, 85, 247, 0.3);
+            transform: translateY(-10px) scale(1.02) !important; /* Override float transform */
+            animation-play-state: paused; /* Stop floating on hover */
+        }
+
+        /* Project Image */
+        .project-image {
+            height: 180px;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s ease;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.1);
+        }
+
+        /* Project Content */
+        .project-content {
+            padding: 25px;
+        }
+
+        .project-content h2 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .project-content p {
+            font-size: 14px;
+            color: #d1d1d1;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        /* Tech Tags */
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tech-stack span {
+            font-size: 12px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            background: rgba(168, 85, 247, 0.15);
+            color: #a855f7;
+            border: 1px solid rgba(168, 85, 247, 0.3);
+        }
+
+        /* Buttons */
+        .project-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 8px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn.github {
+            border: 2px solid #a855f7;
+            color: #a855f7;
+            background: transparent;
+        }
+
+        .btn.github:hover {
+            background: #a855f7;
+            color: #fff;
+        }
+
+        .btn.live {
+            background: #a855f7;
+            color: #fff;
+        }
+
+        .btn.live:hover {
+            background: #9333ea;
+            transform: translateY(-2px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .project-card { margin-bottom: 20px; }
+        }
+    /* ===== PROJECTS SUBTITLE ===== */
+.projects-subtitle{
+    text-align:center;
+    max-width:720px;
+    margin:-20px auto 50px;
+    color:#cfcfcf;
+    font-size:16px;
+    line-height:1.6;
+    opacity:0;
+    transform:translateY(20px);
+    transition:0.8s ease;
+}
+
+.projects-subtitle.show{
+    opacity:1;
+    transform:translateY(0);
+}
