@@ -17,7 +17,7 @@ body{
 .animated-bg{
     position:fixed;
     inset:0;
-    background:url("https://wallpaperaccess.com/full/1119343.jpg") center/cover;
+    background:url("background.jpg") center/cover;
     filter:brightness(0.3) blur(4px);
     animation:bgPan 30s alternate infinite;
     z-index:-5;
@@ -231,3 +231,4 @@ body{
     opacity:1;
     transform:translateY(0);
 }
+
