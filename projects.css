@@ -22,7 +22,7 @@
             width: 100%;
             height: 100%;
             z-index: -5;
-            background-image: url('https://wallpaperaccess.com/full/1119343.jpg'); 
+            background-image: url('.jpg'); 
             background-size: cover;
             background-position: center;
             animation: bgPan 30s ease-in-out infinite alternate;
@@ -367,3 +367,4 @@
     opacity:1;
     transform:translateY(0);
 }
+
