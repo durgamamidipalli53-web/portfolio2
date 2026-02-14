@@ -22,7 +22,7 @@
             width: 100%;
             height: 100%;
             z-index: -5; /* Lowest Layer */
-            background-image: url('https://wallpaperaccess.com/full/1119343.jpg'); 
+            background-image: url('background.jpg'); 
             /* NOTE: Replace the URL above with your local path: url('C:/Users/.../images/your-bg.jpg') */
             background-size: cover;
             background-position: center;
@@ -385,4 +385,5 @@
             .buttons { justify-content: center; }
             .nav-links { display: none; } /* Hide nav on mobile for simplicity */
         }
+
     
